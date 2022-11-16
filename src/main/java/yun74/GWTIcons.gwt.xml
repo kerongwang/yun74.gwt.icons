@@ -11,4 +11,9 @@
   <set-property name="gwt.logging.developmentModeHandler" value="ENABLED" />
   <set-property name="gwt.logging.systemHandler" value="DISABLED" />    
   <set-property name="user.agent" value="gecko1_8,safari" />
+
+  <generate-with class="yun74.bindery.generator.IconBuilderGenerator" >
+    <when-type-assignable class="yun74.bindery.IconBuilder" />
+  </generate-with>
+
 </module>
