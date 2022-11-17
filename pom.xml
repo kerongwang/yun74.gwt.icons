@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.risetek</groupId>
+	<groupId>yun74.gwt</groupId>
 	<artifactId>yun74.gwt.icons</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>gwt-lib</packaging>
@@ -47,26 +49,6 @@
 				<artifactId>gwt-dev</artifactId>
 				<version>${gwt.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>io.github.gwtplus.gin</groupId>
-				<artifactId>gin</artifactId>
-				<version>${gin.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.inject</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>1</version>
-			</dependency>
-			<dependency>
-				<groupId>com.google.inject</groupId>
-				<artifactId>guice</artifactId>
-				<version>${guice.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.google.inject.extensions</groupId>
-				<artifactId>guice-jndi</artifactId>
-				<version>${guice.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -78,14 +60,12 @@
 		<dependency>
 			<groupId>org.gwtproject</groupId>
 			<artifactId>gwt-dev</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.gwtplus.gin</groupId>
-			<artifactId>gin</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
+			<exclusions>
+				<exclusion><!-- jre provide javax.xml  -->
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -105,53 +85,16 @@
 					<artifactId>gwt-maven-plugin</artifactId>
 					<version>${gwt-maven.version}</version>
 					<extensions>true</extensions>
-					<configuration>
-						<launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>
-						<sourceLevel>${jdk.version}</sourceLevel>
-						<failOnError>true</failOnError>
-						<codeserverArgs>
-							<arg>-bindAddress</arg>
-							<arg>0.0.0.0</arg>
-						</codeserverArgs>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>${maven-source.version}</version>
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<phase>package</phase>
-							<goals>
-								<goal>jar-no-fork</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<!-- Workaround for https://issues.apache.org/jira/browse/MSOURCES-95 -->
-						<includes>
-							<include>**/**</include>
-						</includes>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.bsc.maven</groupId>
 					<artifactId>maven-processor-plugin</artifactId>
 					<version>${maven-processor.version}</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>${maven-war.version}</version>
-					<executions>
-						<execution>
-							<id>default-war</id>
-							<phase>package</phase>
-							<goals>
-								<goal>war</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -162,22 +105,9 @@
 				<artifactId>gwt-maven-plugin</artifactId>
 				<configuration>
 					<moduleName>yun74.gwt.icons</moduleName>
-					<moduleShortName>gwticons</moduleShortName>
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 
 		</plugins>
 	</build>

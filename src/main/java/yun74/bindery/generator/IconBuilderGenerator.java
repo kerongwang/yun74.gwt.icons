@@ -57,9 +57,11 @@ public class IconBuilderGenerator extends Generator {
 
 				Resource r = resource.getResource(path);
 				if (null != r) {
+					logger.log(TreeLogger.INFO, "Process '" + path + "'", null);
+
 					GWTIconSVGParser svg = GWTIconSVGParser.parser(resource.getResourceAsStream(path));
 					if (svg != null)
-						sourceWriter.indentln("add(\"" + path + "\", \"" + svg.view + "\", \"" + svg.path + "\");");
+						sourceWriter.indentln("addResource(\"" + path + "\", \"" + svg.view + "\", \"" + svg.path + "\");");
 				}
 			}
 

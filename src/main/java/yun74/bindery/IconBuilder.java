@@ -1,7 +1,11 @@
 package yun74.bindery;
 
+import java.util.function.BiConsumer;
+
 import com.google.gwt.user.client.ui.Widget;
 
 public interface IconBuilder {
-	public Widget build(String name);
+	IconBuilder name(String name);
+	Widget build();
+	void dump(BiConsumer<String, Widget> conmuser);
 }

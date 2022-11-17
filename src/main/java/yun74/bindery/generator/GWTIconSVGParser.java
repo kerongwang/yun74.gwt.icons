@@ -2,12 +2,9 @@ package yun74.bindery.generator;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.Optional;
-
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -20,8 +17,9 @@ public class GWTIconSVGParser {
 	static void debugElement(Element e) {
 		System.out.println("e is: " + e);
 		NamedNodeMap attributes = e.getAttributes();
-		for(int i=0; i < attributes.getLength(); i++) {
-			System.out.println("attribute[" + i + "]: " + attributes.item(i) + " class: " + attributes.item(i).getClass().getName());
+		for (int i = 0; i < attributes.getLength(); i++) {
+			System.out.println("attribute[" + i + "]: " + attributes.item(i) + " class: "
+					+ attributes.item(i).getClass().getName());
 		}
 	}
 
@@ -30,18 +28,17 @@ public class GWTIconSVGParser {
 		try {
 			Document doc = dbf.newDocumentBuilder().parse(in);
 			doc.getDocumentElement().normalize();
-			Optional.ofNullable(doc.getElementsByTagName(svgTagName)).ifPresent(nodes -> 
-				Optional.ofNullable((nodes.item(0))).ifPresent(e -> {
-					// process svg attribute viewBpx
-					Optional.ofNullable(((Element)(e)).getAttribute("viewBox")).ifPresent(v -> svg.view = v);
-					// process path node.
-					Optional.ofNullable(((Element)(e)).getElementsByTagName("path")).ifPresent(p -> {
-						Element el = (Element)p.item(0);
+			Optional.ofNullable(doc.getElementsByTagName(svgTagName))
+					.ifPresent(nodes -> Optional.ofNullable((nodes.item(0))).ifPresent(e -> {
+						// process svg attribute viewBpx
+						Optional.ofNullable(((Element) (e)).getAttribute("viewBox")).ifPresent(v -> svg.view = v);
+						// process path node.
+						Optional.ofNullable(((Element) (e)).getElementsByTagName("path")).ifPresent(p -> {
+							Element el = (Element) p.item(0);
 //						debugElement(el);
-						svg.path = el.getAttribute("d");
-						
-					});
-				}));
+							svg.path = el.getAttribute("d");
+						});
+					}));
 			return svg;
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
@@ -57,7 +54,6 @@ public class GWTIconSVGParser {
 
 	String path;
 	String view;
-	public Path filePath;
 
 	@Override
 	public String toString() {
