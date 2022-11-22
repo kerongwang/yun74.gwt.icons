@@ -8,4 +8,6 @@
 		<when-type-assignable class="yun74.bindery.IconBuilder" />
 	</generate-with>
 
+	<public path="public" />
+	<stylesheet src="css/materialdesignicons.css"/>
 </module>
