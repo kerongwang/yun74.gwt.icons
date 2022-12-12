@@ -37,6 +37,7 @@ public abstract class IconBuilderBase implements IconBuilder {
 		init();
 	}
 
+	// Iterate all SVG Icons
 	public void dump(BiConsumer<String, Widget> consumer) {
 		for (Entry<String, SVGData> entry : datamaps.entrySet()) {
 			consumer.accept(entry.getKey(), new SVGIcon(entry.getValue().view, entry.getValue().path));
