@@ -1,4 +1,4 @@
-package yun74.bindery.generator;
+package yun74.gwt.icons.bindery.generator;
 
 import java.io.PrintWriter;
 
@@ -12,7 +12,7 @@ import com.google.gwt.dev.resource.Resource;
 import com.google.gwt.dev.resource.ResourceOracle;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
-import yun74.bindery.IconBuilderBase;
+import yun74.gwt.icons.bindery.IconBuilderBase;
 
 public class IconBuilderGenerator extends Generator {
 	private String implTypeName;
@@ -48,6 +48,8 @@ public class IconBuilderGenerator extends Generator {
 		PrintWriter printWriter = context.tryCreate(logger, implPackageName, implTypeName);
 
 		if (printWriter != null) {
+			logger.log(TreeLogger.INFO, "======================= Porcess Yun74Icons ==============================", null);
+
 			SourceWriter sourceWriter = composerFactory.createSourceWriter(context, printWriter);
 			sourceWriter.indentln("@Override public void init() {");
 			ResourceOracle resource = context.getResourcesOracle();

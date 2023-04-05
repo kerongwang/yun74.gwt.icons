@@ -4,8 +4,8 @@
 		<exclude name="**/generator/**" />
 	</source>
 
-	<generate-with class="yun74.bindery.generator.IconBuilderGenerator">
-		<when-type-assignable class="yun74.bindery.IconBuilder" />
+	<generate-with class="yun74.gwt.icons.bindery.generator.IconBuilderGenerator">
+		<when-type-assignable class="yun74.gwt.icons.bindery.IconBuilder" />
 	</generate-with>
 
 	<public path="public" />
