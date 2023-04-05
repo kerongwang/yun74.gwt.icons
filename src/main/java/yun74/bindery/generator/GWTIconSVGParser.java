@@ -23,7 +23,14 @@ public class GWTIconSVGParser {
 		}
 	}
 
+	
+	private static void SVGtoWOFF(InputStream in) throws IOException {
+		System.out.println("------------------------------------- run svg to woff");
+		
+	}
+	
 	public static GWTIconSVGParser parser(InputStream in) {
+//		SVGtoWOFF(in);
 		GWTIconSVGParser svg = new GWTIconSVGParser();
 		try {
 			Document doc = dbf.newDocumentBuilder().parse(in);
