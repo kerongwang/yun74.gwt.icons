@@ -13,6 +13,9 @@
 			<id>github</id>
 			<name>Yun74 Icons processor for GWT</name>
 			<url>https://maven.pkg.github.com/kerongwang/yun74.gwt.icons</url>
+            <snapshots>
+              <enabled>true</enabled>
+          	</snapshots>			
 		</repository>
 	</distributionManagement>
 
