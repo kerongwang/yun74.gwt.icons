@@ -20,6 +20,7 @@
 - 构建并发布
     ```maven
     mvn clean deploy -s {PATH TO}/settings.xml
+    mvn clean deploy -Drevision=1.0 -s {PATH TO}/settings.xml
     ```
 
 ## 应用方式
@@ -27,8 +28,8 @@
     ```xml
     <dependency>
         <groupId>yun74.gwt</groupId>
-        <artifactId>yun74.gwt.icons</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>icons</artifactId>
+        <version>1.0</version>
         <type>gwt-lib</type>
     </dependency>
     ```
