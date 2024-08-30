@@ -3,6 +3,13 @@ name: Publish GITHUB Packages
 
 on:
   workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      revision:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Publish Version'
+        # Default value if no value is explicitly provided
+        default: '1.0-SNAPSHOT'
 
 jobs:
   build:
@@ -20,6 +27,6 @@ jobs:
 
     - name: Publish package
       run:
-        mvn --batch-mode deploy
+        mvn --batch-mode deploy -Drevision=${{github.event.inputs.revision}}
       env:
         GITHUB_TOKEN: ${{ secrets.workflows_token }}
